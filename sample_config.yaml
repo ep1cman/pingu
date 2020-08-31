@@ -1,0 +1,28 @@
+config:
+    interval: 10
+devices:
+    - type: Ping
+      host: 172.16.0.1
+      name: Camera1
+      events: [OFFLINE, ONLINE]
+    - type: Ping
+      host: 172.16.0.2
+      name: Camera2
+      events: [OFFLINE, ONLINE]
+    - type: Ping
+      host: 172.16.3
+      name: Camera3
+      events: [OFFLINE, ONLINE]
+    - type: Ping
+      host: 172.16.0.4
+      name: Camera4
+      events: [OFFLINE, ONLINE]
+notifiers: 
+    Telegram:
+        api_token: API_TOKEN
+        chat_id: CHAT_ID
+loggers:
+    Console:
+        mode: EVERY
+        
+        
