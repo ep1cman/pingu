@@ -5,4 +5,4 @@ logger = logging.getLogger("Log")
 
 class Console(Logger):
     async def log(self, result):
-        logger.info(result)  
+        logger.info(result)

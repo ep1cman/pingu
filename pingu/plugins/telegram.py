@@ -17,7 +17,7 @@ class Telegram(Notifier):
 
         self.online_message = kwargs.get('online_message', "<b>PINGU:</b>\nDevice: {name} ({host}) has come ONLINE")
         self.offline_message = kwargs.get('offline_message', "<b>PINGU:</b>\nDevice: {name} ({host}) has gone OFFLINE")
-        
+
     async def notify(self, result):
         if result['state'] == Events.ONLINE:
             message = self.online_message.format(**result)
@@ -26,8 +26,8 @@ class Telegram(Notifier):
         else:
             return
         await self.send_message(message)
-    
-    async def send_message(self, text):        
+
+    async def send_message(self, text):
         try:
             await self._bot.send_message(self.chat_id, text)
         except exceptions.BotBlocked:
@@ -45,4 +45,3 @@ class Telegram(Notifier):
         else:
             log.info(f'Target [ID:{self.chat_id}]: success')
 
- 

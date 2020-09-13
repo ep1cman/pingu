@@ -24,5 +24,4 @@ notifiers:
 loggers:
     Console:
         mode: EVERY
-        
-        
+
