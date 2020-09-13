@@ -8,7 +8,6 @@ from pingu.plugin import Checker, Events
 log = logging.getLogger('Ping')
 
 class Ping(Checker):
-    name = 'ping'
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.num_packets = kwargs.get('num_packets', 4)

@@ -13,8 +13,7 @@ class Events(Enum):
     OFFLINE = 2
 
 class Plugin():
-    name = "OVERRIDE ME"
-
+    pass
 class Notifier(Plugin):
     pass
 
@@ -45,9 +44,9 @@ class Logger(Plugin):
             await self.log(result)
         elif self.mode == Logger.Modes.CHANGE and result != self._last_result[result["name"]]:
             await self.log(result)
-        
+
         self._last_result[result["name"]] = result
-    
+
     def log(self, result):
         raise NotImplementedError()
 
@@ -59,7 +58,6 @@ class PluginLoader():
 
     def discover_plugins(self, path):
         for _, name, _ in pkgutil.iter_modules([path], "pingu.plugins."):
-            print (name)
             plugin_module = importlib.import_module(name, ".")
             for (_, member_value) in inspect.getmembers(plugin_module, inspect.isclass):
                 if issubclass(member_value, Plugin) and (member_value not in [Plugin, Notifier, Logger, Checker]) :

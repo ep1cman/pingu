@@ -10,8 +10,6 @@ from pingu.plugin import Notifier, Events
 log = logging.getLogger('Telegram')
 
 class Telegram(Notifier):
-    name = 'telegram'
-
     def __init__(self, **kwargs):
         self.api_token = kwargs['api_token']
         self.chat_id = kwargs['chat_id']
