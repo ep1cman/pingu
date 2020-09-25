@@ -33,7 +33,7 @@ class UnifiPoe(Notifier):
 
     async def power_cycle_port(self, interface):
         await asyncio.sleep(self.delay)
-        async with asyncssh.connect(self.ssh_host, username=self.ssh_username, password=self.ssh_password) as conn:
+        async with asyncssh.connect(self.ssh_host, username=self.ssh_username, password=self.ssh_password, known_hosts=None) as conn:
             log.info(f'Power cycling interface {interface} on {self.ssh_host}')
             command = self.COMMAND.format(interface)
             log.debug(command)
